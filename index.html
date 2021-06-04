@@ -12,6 +12,45 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>Budget Tracker</h1>
+
+      <h2 id='message'></h2>
+
+      <div id='inUp-form'>
+        <div id="signIn-Section">
+          <form id="signIn-Form">
+            <label>Sign In</label>
+            <input name="credentials[email]" type="email" placeholder="Enter Email">
+            <label>Password</label>
+            <input name="credentials[password]" type="text" placeholder="Enter Password">
+            <button type="submit">Sign in</button>
+          </form>
+        </div>
+
+        <div id="signUp-Section">
+          <form id="signUp-Form">
+            <label>Sign Up</label>
+            <input name="credentials[email]" type="email" placeholder="Enter Email">
+            <label>Password</label>
+            <input name="credentials[password]" type="text" placeholder="Enter Password">
+            <label>Confirm Password</label>
+            <input name="credentials[password_confirmation]" type="text" placeholder="Enter Password">
+            <button type="submit">Sign up</button>
+          </form>
+        </div>
+      </div>
+
+      <div id='changePW-Section'>
+        <form id="changePW-Form">
+          <label>Old password</label>
+          <input name="passwords[old]" type="text" placeholder="Enter Old Password">
+          <label>New Password</label>
+          <input name="passwords[new]" type="text" placeholder="Enter New Password">
+          <button>Change Password</button>
+        </form>
+      </div>
+
+      <button id="signOut">Sign Out</button>
+      <button id="ChangePW">Sign Out</button>
     </body>
 </html>
