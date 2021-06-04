@@ -12,7 +12,17 @@ const onExpenseCreationFailure = (res) => {
   $('#message').text('Error Creating Expense')
 }
 
+const onIndexExpensesSuccess = () => {
+
+}
+
+const onIndexExpensesFailure = () => {
+
+}
+
 module.exports = {
   onExpenseCreationSuccess,
-  onExpenseCreationFailure
+  onExpenseCreationFailure,
+  onIndexExpensesSuccess,
+  onIndexExpensesFailure
 }

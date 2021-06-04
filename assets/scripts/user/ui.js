@@ -17,8 +17,8 @@ const onSignInFailure = () => {
 }
 
 const onSignUpSuccess = () => {
-  console.log('successfully signed in')
-  $('#message').text('successfully signed in')
+  console.log('successfully signed up')
+  $('#message').text('successfully signed up')
 }
 
 const onSignUpFailure = () => {

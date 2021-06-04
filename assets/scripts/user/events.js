@@ -29,7 +29,8 @@ const onSignUp = (event) => {
   console.log(data)
 
   api.signUp(data)
-    .then(console.log('successfully signed up'))
+    .then(ui.onSignUpSuccess)
+    .catch(ui.onSignUpFailure)
 }
 
 const onSignOut = (event) => {
