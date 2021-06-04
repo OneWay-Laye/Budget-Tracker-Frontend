@@ -5,18 +5,22 @@
 
 // use require without a reference to ensure a file is bundled
 // require('./example')
-const userEvent = require('./user/events')
-
+const userEvents = require('./user/events')
+const expenseEvents = require('./expenses/events')
 
 $(() => {
   // your JS code goes here
   // run when the page loads
-  $(document).ready(userEvent.onPageLoad)
+  $(document).ready(userEvents.onPageLoad)
 
-  // User account interactions interactions
-  $('#signIn-Form').on('submit', userEvent.onSignIn)
-  $('#signUp-Form').on('submit', userEvent.onSignUp)
-  $('#signOut').on('click', userEvent.onSignOut)
-  $('#changePW-Form').on('submit', userEvent.onSubChangePassword)
-  $('#changePW').on('click', userEvent.onShowChangePW)
+  // User account interactions
+  $('#signIn-Form').on('submit', userEvents.onSignIn)
+  $('#signUp-Form').on('submit', userEvents.onSignUp)
+  $('#signOut').on('click', userEvents.onSignOut)
+  $('#changePW-Form').on('submit', userEvents.onSubChangePassword)
+  $('#changePW').on('click', userEvents.onShowChangePW)
+
+  // Expense interactions
+  $('#newExpense').on('submit', expenseEvents.onCreateExpense)
+  $('#index-Expenses').on('click', expenseEvents.onIndexExpenses)
 })

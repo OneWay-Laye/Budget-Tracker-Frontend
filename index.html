@@ -14,6 +14,7 @@
     <body>
       <h1>Budget Tracker</h1>
 
+    <!--User Interactions-->
       <h2 id='message'></h2>
 
       <div id='inUp-form'>
@@ -52,5 +53,23 @@
 
       <button id="signOut">Sign Out</button>
       <button id="ChangePW">Sign Out</button>
+
+
+      <!--Expense Interactions-->
+      <h2>Create New Expense</h2>
+      <div id="newExpense-Section">
+        <form id="newExpense">
+          <label>Name your expense</label>
+          <input name="expense[company]" type="text" placeholder=" Enter Expense or Bill">
+          <label>Total Amount $</label><input name="expense[amount]" type="text" placeholder="Enter Amount">
+          <label>Date</label>
+          <input name="expense[due]" type="date" placeholder="MM/DD/YY(YYYY)">
+          <button type="submit">Create</button>
+        </form>
+      </div>
+
+      <h2>Show All Expenses</h2>
+      <button id='index-Expenses'>Show Expenses</button>
+
     </body>
 </html>
