@@ -30,7 +30,7 @@ const showOneExpense = (data) => {
 
 const showAllExpenses = () => {
   return $.ajax({
-    url: config.apiURL + '/expense',
+    url: config.apiUrl + '/expense',
     method: 'GET',
     headers: {
       Authorization: `Bearer ${store.user.token}`

@@ -12,12 +12,23 @@ const onExpenseCreationFailure = (res) => {
   $('#message').text('Error Creating Expense')
 }
 
-const onIndexExpensesSuccess = () => {
+const onIndexExpensesSuccess = (res) => {
+  console.log(res)
+  let expenseHtml = ''
 
+  res.forEach(expense => {
+    expenseHtml += `
+    <h4>${expense.company}</h4>
+    <h2>$${expense.amount}</h2>
+    <p>Date ${expense.due}</p>
+    <p>ID: ${expense._id}</p>
+    `
+  })
+  $('#expenseBoard').html(expenseHtml)
 }
 
-const onIndexExpensesFailure = () => {
-
+const onIndexExpensesFailure = (res) => {
+  console.log(res)
 }
 
 module.exports = {
