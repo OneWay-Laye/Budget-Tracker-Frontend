@@ -23,4 +23,5 @@ $(() => {
   // Expense interactions
   $('#newExpense').on('submit', expenseEvents.onCreateExpense)
   $('#index-Expenses').on('click', expenseEvents.onIndexExpenses)
+  $('#findExpense').on('submit', expenseEvents.onShowExpense)
 })

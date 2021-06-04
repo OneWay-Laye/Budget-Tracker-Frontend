@@ -24,8 +24,14 @@ const updateExpense = (data, expenseId) => {
   })
 }
 
-const showOneExpense = (data) => {
-
+const showOneExpense = (expenseId) => {
+  return $.ajax({
+    url: `${config.apiUrl}/expense/${expenseId}`,
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${store.user.token}`
+    }
+  })
 }
 
 const showAllExpenses = () => {
