@@ -24,4 +24,7 @@ $(() => {
   $('#newExpense').on('submit', expenseEvents.onCreateExpense)
   $('#index-Expenses').on('click', expenseEvents.onIndexExpenses)
   $('#findExpense').on('submit', expenseEvents.onShowExpense)
+  $('.delete').on('click', expenseEvents.onDeleteExpense)
+  $('#expenseBoard').on('click', '.showUpdate', expenseEvents.onloadUpdate)
+  $('#updateForm-Section').on('submit', expenseEvents.onUpdateExpense)
 })

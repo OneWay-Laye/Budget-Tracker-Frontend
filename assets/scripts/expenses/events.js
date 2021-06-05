@@ -32,8 +32,33 @@ const onShowExpense = (event) => {
     .catch(ui.showExpenseFailure)
 }
 
+const onloadUpdate = (event) => {
+  event.preventDefault()
+  console.log('OLU')
+  ui.loadUpdateForm()
+}
+
+const onUpdateExpense = (event) => {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  const id = data.expense.id
+  console.log(id)
+  console.log(data)
+
+  api.updateExpense()
+    .then()
+    .catch()
+}
+
+const onDeleteExpense = (event) => {
+  event.preventDefault()
+}
+
 module.exports = {
   onCreateExpense,
   onIndexExpenses,
-  onShowExpense
+  onShowExpense,
+  onUpdateExpense,
+  onDeleteExpense,
+  onloadUpdate
 }
