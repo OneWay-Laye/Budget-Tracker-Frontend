@@ -40,18 +40,26 @@ const onloadUpdate = (event) => {
 
 const onUpdateExpense = (event) => {
   event.preventDefault()
+  console.log('in onUpdateExpense')
   const data = getFormFields(event.target)
-  const id = data.expense.id
-  console.log(id)
-  console.log(data)
+  const id = $(event.target).data('id')
 
-  api.updateExpense()
-    .then()
-    .catch()
+  console.log(data, id)
+
+  api.updateExpense(data, id)
+    .then(console.log('sucsess'))
+    .catch(console.log('error'))
 }
 
 const onDeleteExpense = (event) => {
   event.preventDefault()
+
+  const id = $(event.target).data('id')
+  console.log(id)
+
+  api.deleteExpense(id)
+    .then(ui.onDeleteExpenseSuccess)
+    .catch(console.log('problem deleting'))
 }
 
 module.exports = {

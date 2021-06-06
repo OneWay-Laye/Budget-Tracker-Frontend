@@ -44,8 +44,14 @@ const showAllExpenses = () => {
   })
 }
 
-const deleteExpense = (data) => {
-
+const deleteExpense = (id) => {
+  return $.ajax({
+    url: config.apiUrl + '/expense/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${store.user.token}`
+    }
+  })
 }
 
 module.exports = {

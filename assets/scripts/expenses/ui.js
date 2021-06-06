@@ -18,13 +18,13 @@ const onIndexExpensesSuccess = (res) => {
 
   res.forEach(expense => {
     expenseHtml += `
-    <div class="perExpenseSection">
+    <div class="perExpenseSection" data-id=${expense._id}>
       <h4 class='expenseName'>Expense: ${expense.company}</h4>
       <h2 class='expenseAmount'>Amount: $${expense.amount}</h2>
       <p class='expenseDate'>Date: ${expense.due}</p>
-      <p class='expenseId'>ID: ${expense._id}</p>
+      <p class='expenseId' data-id=${expense._id}>ID: ${expense._id}</p>
       <button class="showUpdate">Update</button>
-      <button class="delete">Delelete</button>
+      <button data-id=${expense._id} class="delete">Delete</button>
     </div>
     `
   })
@@ -40,14 +40,13 @@ const onIndexExpensesFailure = (res) => {
 const showExpenseSuccess = (res) => {
   console.log(res)
   const expenseHtml = `
-  <div class="perExpenseSection">
-    <h4>Expense: ${res.authExpense.company}</h4>
-    <h2>Amount: $${res.authExpense.amount}</h2>
-    <p>Date: ${res.authExpense.due}</p>
-    <p>ID: ${res.authExpense._id}</p>
-    <div class="updateFormPer"></div>
+  <div class="perExpenseSection" data-id=${res.authExpense._id}>
+    <h4 class='expenseName'>Expense: ${res.authExpense.company}</h4>
+    <h2 class='expenseAmount'>Amount: $${res.authExpense.amount}</h2>
+    <p class='expenseDate'>Date: ${res.authExpense.due}</p>
+    <p class='expenseId' data-id=${res.authExpense._id}>ID: ${res.authExpense._id}</p>
     <button class="showUpdate">Update</button>
-    <button class="delete">Delelete</button>
+    <button data-id=${res.authExpense._id} class="delete">Delete</button>
   </div>
   `
 
@@ -63,7 +62,7 @@ const loadUpdateForm = () => {
   console.log('in LUF')
 
   $(event.target).parent().append(`<div class="updateForm-Section">
-    <form id="updateForm">
+    <form class="updateForm">
       <h5>Update Expense</h5>
       <label>Name your expense</label>
       <input name="expense[company]" type="text" placeholder=" Enter Expense or Bill">
@@ -76,6 +75,12 @@ const loadUpdateForm = () => {
   <div>`)
 }
 
+const onDeleteExpenseSuccess = () => {
+  console.log('its gone')
+  $('#message').text('Successfully Deleted Expense')
+  $('#expenseBoard').text('')
+}
+
 module.exports = {
   onExpenseCreationSuccess,
   onExpenseCreationFailure,
@@ -83,5 +88,6 @@ module.exports = {
   onIndexExpensesFailure,
   showExpenseSuccess,
   showExpenseFailure,
-  loadUpdateForm
+  loadUpdateForm,
+  onDeleteExpenseSuccess
 }
