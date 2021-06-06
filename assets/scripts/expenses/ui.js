@@ -51,7 +51,6 @@ const showExpenseSuccess = (res) => {
   `
 
   $('#expenseBoard').html(expenseHtml)
-  $('.updateForm-Section').hide()
 }
 
 const showExpenseFailure = (res) => {
@@ -60,9 +59,10 @@ const showExpenseFailure = (res) => {
 
 const loadUpdateForm = () => {
   console.log('in LUF')
+  const expense = $(event.target).parent().data('id')
 
   $(event.target).parent().append(`<div class="updateForm-Section">
-    <form class="updateForm">
+    <form class="updateForm" data-id=${expense}>
       <h5>Update Expense</h5>
       <label>Name your expense</label>
       <input name="expense[company]" type="text" placeholder=" Enter Expense or Bill">
@@ -70,7 +70,7 @@ const loadUpdateForm = () => {
       <input name="expense[amount]" type="text" placeholder="Enter Amount">
       <label>Date</label>
       <input name="expense[due]" type="date" placeholder="MM/DD/YY(YYYY)">
-      <button type="submit">Submit Update</button>
+      <button type="submit" data-id=${expense}>Submit Update</button>
     </form>
   <div>`)
 }
@@ -78,7 +78,20 @@ const loadUpdateForm = () => {
 const onDeleteExpenseSuccess = () => {
   console.log('its gone')
   $('#message').text('Successfully Deleted Expense')
-  $('#expenseBoard').text('')
+  const parent = $(event.target).parent()
+  console.log(parent)
+  const grandParent = parent.parent()
+
+  console.log(grandParent)
+  $(grandParent).hide()
+}
+
+const onUpdateExpenseSuccess = () => {
+  $('#message').text('Successfully Created Expense')
+}
+
+const onUpdateExpenseFailure = () => {
+
 }
 
 module.exports = {
@@ -89,5 +102,7 @@ module.exports = {
   showExpenseSuccess,
   showExpenseFailure,
   loadUpdateForm,
-  onDeleteExpenseSuccess
+  onDeleteExpenseSuccess,
+  onUpdateExpenseSuccess,
+  onUpdateExpenseFailure
 }

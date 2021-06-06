@@ -25,3 +25,7 @@
 ## Commit 5
 
 *This submit will handle the Delete Request*
+
+## Commit 6
+
+*This commit dynamically update expense*

@@ -43,11 +43,16 @@ const onUpdateExpense = (event) => {
   console.log('in onUpdateExpense')
   const data = getFormFields(event.target)
   const id = $(event.target).data('id')
+  const parent = $(event.target).parent()
+  console.log(parent)
+  const grandParent = parent.parent()
+
+  console.log(grandParent)
 
   console.log(data, id)
 
   api.updateExpense(data, id)
-    .then(console.log('sucsess'))
+    .then(ui.onUpdateExpenseSuccess)
     .catch(console.log('error'))
 }
 
