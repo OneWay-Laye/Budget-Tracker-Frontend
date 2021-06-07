@@ -29,3 +29,7 @@
 ## Commit 6
 
 *This commit dynamically update expense*
+
+## Commit 7
+
+*Gave Better messages after request*

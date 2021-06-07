@@ -2,9 +2,11 @@ const store = require('./../store')
 
 const onExpenseCreationSuccess = (res) => {
   console.log('successfully created expense')
-  $('#message').text('Successfully Created Expense')
+  $('#newExpense-Section').hide()
   store.expense = res.expense
   console.log(store.expense)
+
+  $('#message').text(`Successfully Created Expense for ${res.expense.company}. Show expenses to see new Expense`)
 }
 
 const onExpenseCreationFailure = (res) => {
@@ -18,13 +20,13 @@ const onIndexExpensesSuccess = (res) => {
 
   res.forEach(expense => {
     expenseHtml += `
-    <div class="perExpenseSection" data-id=${expense._id}>
-      <h4 class='expenseName'>Expense: ${expense.company}</h4>
-      <h2 class='expenseAmount'>Amount: $${expense.amount}</h2>
-      <p class='expenseDate'>Date: ${expense.due}</p>
-      <p class='expenseId' data-id=${expense._id}>ID: ${expense._id}</p>
-      <button class="showUpdate">Update</button>
-      <button data-id=${expense._id} class="delete">Delete</button>
+    <div class="perExpenseSection row" data-id=${expense._id}>
+      <h2 class='expenseName col-9'>Expense: ${expense.company}</h2>
+      <h5 class='expenseAmount col-3'>Amount: $${expense.amount}</h5>
+      <p class='expenseDate col-6'>Date: ${expense.due}</p>
+      <p class='expenseId col-6' data-id=${expense._id}>ID: ${expense._id}</p>
+      <button class="showUpdate btn btn-primary col-6">Update</button>
+      <button class="delete btn btn-danger col-6" data-id=${expense._id} class="delete">Delete</button>
     </div>
     `
   })
@@ -40,13 +42,13 @@ const onIndexExpensesFailure = (res) => {
 const showExpenseSuccess = (res) => {
   console.log(res)
   const expenseHtml = `
-  <div class="perExpenseSection" data-id=${res.authExpense._id}>
-    <h4 class='expenseName'>Expense: ${res.authExpense.company}</h4>
-    <h2 class='expenseAmount'>Amount: $${res.authExpense.amount}</h2>
-    <p class='expenseDate'>Date: ${res.authExpense.due}</p>
-    <p class='expenseId' data-id=${res.authExpense._id}>ID: ${res.authExpense._id}</p>
-    <button class="showUpdate">Update</button>
-    <button data-id=${res.authExpense._id} class="delete">Delete</button>
+  <div class="perExpenseSection row" data-id=${res.authExpense._id}>
+    <h2 class='expenseName col-9'>Expense: ${res.authExpense.company}</h2>
+    <h5 class='expenseAmount col-3'>Amount: $${res.authExpense.amount}</h5>
+    <p class='expenseDate col-6'>Date: ${res.authExpense.due}</p>
+    <p class='expenseId col-6' data-id=${res.authExpense._id}>ID: ${res.authExpense._id}</p>
+    <button class="showUpdate btn btn-primary col-6">Update</button>
+    <button class="btn btn-danger col-6" data-id=${res.authExpense._id} class="delete">Delete</button>
   </div>
   `
 
@@ -62,36 +64,30 @@ const loadUpdateForm = () => {
   const expense = $(event.target).parent().data('id')
 
   $(event.target).parent().append(`<div class="updateForm-Section">
-    <form class="updateForm" data-id=${expense}>
-      <h5>Update Expense</h5>
-      <label>Name your expense</label>
-      <input name="expense[company]" type="text" placeholder=" Enter Expense or Bill">
-      <label>Total Amount $</label>
-      <input name="expense[amount]" type="text" placeholder="Enter Amount">
-      <label>Date</label>
-      <input name="expense[due]" type="date" placeholder="MM/DD/YY(YYYY)">
-      <button type="submit" data-id=${expense}>Submit Update</button>
+    <form class="updateForm row" data-id=${expense}>
+      <h5 class="col-12" >Update Expense</h5>
+      <label class="col-4 updateFormLabel">Name your expense</label>
+      <input name="expense[company]" class="col-7" type="text" placeholder=" Enter Expense or Bill">
+      <label class="col-4 updateFormLabel">Total Amount $</label>
+      <input name="expense[amount]" class="col-7" type="text" placeholder="Enter Amount">
+      <label class="col-4 updateFormLabel">Date</label>
+      <input name="expense[due]" class="col-7" type="date" placeholder="MM/DD/YY(YYYY)">
+      <button class="btn btn-primary col-6 offset-md-3" type="submit" data-id=${expense}>Submit Update</button>
     </form>
   <div>`)
 }
 
 const onDeleteExpenseSuccess = () => {
   console.log('its gone')
-  $('#message').text('Successfully Deleted Expense')
-  const parent = $(event.target).parent()
-  console.log(parent)
-  const grandParent = parent.parent()
-
-  console.log(grandParent)
-  $(grandParent).hide()
+  $('#message').text('Successfully Deleted Expense. Click show expenses to view changes')
 }
 
 const onUpdateExpenseSuccess = () => {
-  $('#message').text('Successfully Created Expense')
+  $('#message').text('Successfully Updated Expense. Click show expenses to view changes')
 }
 
-const onUpdateExpenseFailure = () => {
-
+const onUpdateExpenseFailure = (res) => {
+  $('#message').text('There was an error updating your expense')
 }
 
 module.exports = {

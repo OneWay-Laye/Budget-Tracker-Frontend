@@ -12,6 +12,10 @@ const onCreateExpense = (event) => {
     .catch(ui.onExpenseCreationFailure)
 }
 
+const onShowCreateForm = (event) => {
+  $('#newExpense-Section').show()
+}
+
 const onIndexExpenses = (event) => {
   event.preventDefault()
 
@@ -53,7 +57,7 @@ const onUpdateExpense = (event) => {
 
   api.updateExpense(data, id)
     .then(ui.onUpdateExpenseSuccess)
-    .catch(console.log('error'))
+    .catch(ui.onUpdateExpenseFailure)
 }
 
 const onDeleteExpense = (event) => {
@@ -73,5 +77,7 @@ module.exports = {
   onShowExpense,
   onUpdateExpense,
   onDeleteExpense,
-  onloadUpdate
+  onloadUpdate,
+  onShowCreateForm
+
 }

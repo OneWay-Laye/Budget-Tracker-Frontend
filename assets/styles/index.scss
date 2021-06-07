@@ -1,1 +1,92 @@
 @import '~bootstrap/scss/bootstrap';
+
+
+body{
+  background-color: #6f7372;
+  color: white;
+  margin: 10%;
+  border: 1px solid green;
+}
+
+// this will Allow access to Sign in and Sign Up form
+#inUp-form {
+  display: flex;
+
+  // This allows access to TO signin section
+  & > #signIn-Section {
+    border: 2px solid blue;
+    color: navy;
+    display: flex;
+    flex-direction: column;
+    background-color: #143d38;
+    align-content: space-around;
+
+    // This will allow access into Sign in form
+    & > #signIn-Form {
+      flex-direction: column;
+
+    }
+
+  }
+
+  // This allows access to TO signup section
+  & > #signUp-Section {
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
+
+
+    // This will allow access to Sign up form
+    & > #signIn-Form {
+      flex-direction: column;
+    }
+  }
+
+
+
+}
+
+// This will allow access to expenseBoard
+#expenseBoard {
+
+  margin: 2%;
+// This will get you into Each expense Section
+  & > .perExpenseSection {
+    display: flex;
+    border: 3px solid black;
+    width: inherit;
+  }
+
+  & > #exampleExpense {
+      pointer-events: none;
+
+     & > .perExpenseSection {
+      display: flex;
+      border: 3px solid black;
+
+      & > .expenseAmount {
+      text-align: right;
+      }
+
+      & > .expenseId {
+      text-align: right;
+      }
+
+    }
+  }
+}
+
+#findExpense-Section {
+  width: 98%;
+  padding: 2%;
+}
+
+.updateForm {
+
+
+}
+
+#newExpense-Section {
+  width: 98%;
+  padding: 2%;
+}

@@ -22,6 +22,12 @@ const onSignIn = (event) => {
     .catch(ui.onSignInFailure)
 }
 
+const onShowSignUp = (event) => {
+  $('#signIn-Section').hide()
+  $('#signUp-Section').show()
+  $('#signUp-Section').addClass('col-10')
+}
+
 // This will run whenever a user signs up
 const onSignUp = (event) => {
   event.preventDefault()
@@ -33,6 +39,12 @@ const onSignUp = (event) => {
     .catch(ui.onSignUpFailure)
 }
 
+const onShowSignIn = (event) => {
+  console.log('in SSi')
+  $('#signIn-Section').show()
+  $('#signUp-Section').hide()
+}
+
 const onSignOut = (event) => {
   event.preventDefault()
 
@@ -40,9 +52,12 @@ const onSignOut = (event) => {
     .then(ui.onSignOutSuccess)
 }
 
-const onShowChangePW = (event) => {}
+const onShowChangePW = (event) => {
+  $('#changePW-Section').show()
+  $('#changePW').hide()
+}
 
-const onSubChangePassword = (event) => {
+const onSubmitChangePassword = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
   console.log(data)
@@ -53,8 +68,12 @@ const onSubChangePassword = (event) => {
 }
 
 module.exports = {
+  onPageLoad,
   onSignIn,
   onSignUp,
   onSignOut,
-  onSubChangePassword
+  onSubmitChangePassword,
+  onShowChangePW,
+  onShowSignUp,
+  onShowSignIn
 }

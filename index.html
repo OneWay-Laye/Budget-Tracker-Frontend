@@ -12,76 +12,114 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Budget Tracker</h1>
+      <nav class="row">
+        <h1>Budget Tracker</h1>
+        <div>
+          <button class="btn btn-dark dropdown-toggle" data-toggle="dropdown" id="user">User Settings</button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id='userDropDown'>
+            <a class="dropdown-item" id='changePW' href="#">Change Password</a>
+            <a class="dropdown-item" id='signOut' href="#">signOut</a>
+          </div>
+        </div>
+      </nav>
 
     <!--User Interactions-->
-      <h2 id='message'></h2>
 
-      <div id='inUp-form'>
+
+      <div id='inUp-form' class='justify-content-md-center'>
         <div id="signIn-Section">
-          <form id="signIn-Form">
-            <label>Sign In</label>
-            <input name="credentials[email]" type="email" placeholder="Enter Email">
+          <form id="signIn-Form" class="form-group">
+            <h2>Sign In</h2>
+            <label>Email</label>
+            <input name="credentials[email]" class="form-control" type="email" placeholder="Enter Email">
             <label>Password</label>
-            <input name="credentials[password]" type="text" placeholder="Enter Password">
-            <button type="submit">Sign in</button>
+            <input name="credentials[password]" class="form-control" type="text" placeholder="Enter Password">
+            <button class="btn btn-primary" type="submit">Sign in</button>
           </form>
+          <h4>Dont have an account yet? Press the button below to sign up</h4>
+          <button class="btn btn-primary showSignUp col-6 offset-md-3" type='button'>Sign up</button>
         </div>
 
         <div id="signUp-Section">
           <form id="signUp-Form">
-            <label>Sign Up</label>
-            <input name="credentials[email]" type="email" placeholder="Enter Email">
+            <h2>Sign Up</h2>
+            <label>Email</label>
+            <input name="credentials[email]" class="form-control" type="email" placeholder="Enter Email">
             <label>Password</label>
-            <input name="credentials[password]" type="text" placeholder="Enter Password">
+            <input name="credentials[password]" class="form-control" type="text" placeholder="Enter Password">
             <label>Confirm Password</label>
-            <input name="credentials[password_confirmation]" type="text" placeholder="Enter Password">
-            <button type="submit">Sign up</button>
+            <input name="credentials[password_confirmation]" class="form-control" type="text" placeholder="Enter Password">
+            <button class="btn btn-primary" type="submit">Sign up</button>
           </form>
+          <h4>Already hane an account? Press the button below to sign in!</h4>
+          <button class="btn btn-primary showSignIn col-6 offset-md-3" type='button'>Sign in</button>
         </div>
       </div>
 
       <div id='changePW-Section'>
         <form id="changePW-Form">
+          <h3>Change Password</h3>
           <label>Old password</label>
           <input name="passwords[old]" type="text" placeholder="Enter Old Password">
           <label>New Password</label>
           <input name="passwords[new]" type="text" placeholder="Enter New Password">
-          <button>Change Password</button>
+          <button class="btn btn-primary" type="submit">Change Password</button>
         </form>
       </div>
 
-      <button id="signOut">Sign Out</button>
-      <button id="ChangePW">Change password?</button>
+      <button class="btn btn-primary" id="showCreate">Create new Expense</button>
 
-      <!--Expense Housing, this will show any expense user decides to see
-          From, just 1, select ones, or every expense-->
-      <div id="expenseBoard"></div>
+
+      <div id="findExpense-Section" class='row'>
+        <div class="col-5">
+          <h2>Show All Expenses</h2>
+          <button class="btn btn-primary" id='index-Expenses'>Show Expenses</button>
+        </div>
+
+        <div class="col-7">
+          <h2>Find an Expense</h2>
+          <form id="findExpense-Form" action="">
+            <label for="">Enter Expense ID</label>
+            <input name="expense[id]" type="text" placeholder="Expense Id">
+            <button id="findExpenseButton" class=" btn btn-primary" type="submit">Find Expense</button>
+          </form>
+        </div>
+      </div>
 
       <!--Expense Interactions-->
-      <h2>Create New Expense</h2>
-      <div id="newExpense-Section">
-        <form id="newExpense">
+      <div id="newExpense-Section" class="form-group">
+        <h2>Create New Expense</h2>
+        <form id="newExpense" class="row">
           <label>Name your expense</label>
-          <input name="expense[company]" type="text" placeholder=" Enter Expense or Bill">
-          <label>Total Amount $</label><input name="expense[amount]" type="text" placeholder="Enter Amount">
+          <input name="expense[company]" class="form-control" type="text" placeholder=" Enter Expense or Bill">
+          <label>Total Amount $</label>
+          <input name="expense[amount]" class="form-control" type="text" placeholder="Enter Amount">
           <label>Date</label>
-          <input name="expense[due]" type="date" placeholder="MM/DD/YY(YYYY)">
-          <button type="submit">Create</button>
+          <input name="expense[due]" class="form-control" type="date" placeholder="MM/DD/YY(YYYY)">
+          <button class=" btn btn-primary" type="submit">Create</button>
         </form>
       </div>
 
-      <h2>Show All Expenses</h2>
-      <button id='index-Expenses'>Show Expenses</button>
 
-      <div id="findExpense-Section">
-        <h2>Find an Expense</h2>
-        <form id="findExpense" action="">
-          <label for="">Enter Expense ID</label>
-          <input name="expense[id]" type="text" placeholder="Expense Id">
-          <button type="submit">Find Expense</button>
-        </form>
+
+
+
+
+<h2 id='message'></h2>
+      <!--Expense Housing, this will show any expense user decides to see
+          From, just 1, select ones, or every expense-->
+  <div id="expenseBoard" class='row'>
+    <div id="exampleExpense">
+      <div class="perExpenseSection row" >
+        <h2 class='expenseName col-9'>Expense: Sign In to Track Expenses</h4>
+        <h5 class='expenseAmount col-3'>Amount: $Free</h5>
+        <p class='expenseDate col-6'>Date: Any time but why Wait</p>
+        <p class='expenseId col-6'>ID: Super Special ID</p>
+        <button class="showUpdate btn btn-primary col-6">Update</button>
+        <button class="btn btn-danger col-6"class="delete">Delete</button>
       </div>
+    </div>
+  </div>
 
     </body>
 </html>
