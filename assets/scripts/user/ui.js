@@ -5,8 +5,9 @@ const onLoad = () => {
   $('#changePW-Section').hide()
   $('#user').hide()
   $('#newExpense-Section').hide()
-  $('#findExpense-Section').hide()
   $('#showCreate').hide()
+  $('#expenseBoard').hide()
+  $('#right').hide()
 }
 
 const onSignInSuccess = (res) => {
@@ -19,9 +20,10 @@ const onSignInSuccess = (res) => {
 
   $('#signOut').show()
   $('#changePW').show()
-  $('#findExpense-Section').show()
   $('#showCreate').show()
   $('#user').show()
+  $('#expenseBoard').show()
+  $('#right').show()
 }
 
 const onSignInFailure = () => {
@@ -31,7 +33,7 @@ const onSignInFailure = () => {
 
 const onSignUpSuccess = () => {
   console.log('successfully signed up')
-  $('#message').text('successfully signed up')
+  $('#message').text('Successfully signed up')
   $('#signUp-Form').trigger('reset')
   $('#signUp-Section').hide()
   $('#signIn-Section').show()
@@ -44,26 +46,27 @@ const onSignUpFailure = () => {
 
 const onSignOutSuccess = () => {
   console.log('successfully signed out')
-  $('#message').text('successfully signed out')
-  setTimeout($('#message').text(''), 5000)
+  $('#message').text('Successfully Signed out')
 
   store.user = null
   console.log(store.user)
 
   onLoad()
   $('#signIn-Section').show()
+  $('#expenseBoard').addClass('beforein')
+  $('#right').hide()
 }
 
 const onChangePWSuccess = () => {
   console.log('successfully changed password')
-  $('#message').text('successfully changed password')
+  $('#message').text('Successfully Changed Password')
   $('#changePW-Section').hide()
   $('#changePW').show()
 }
 
 const onChangePWFailure = () => {
   console.log('error changing password, Please try again')
-  $('#message').text('error changing password, Please try again')
+  $('#message').text('Error changing password, Please try again')
 }
 
 module.exports = {

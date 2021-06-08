@@ -25,8 +25,8 @@ const onIndexExpensesSuccess = (res) => {
       <h5 class='expenseAmount col-3'>Amount: $${expense.amount}</h5>
       <p class='expenseDate col-6'>Date: ${expense.due}</p>
       <p class='expenseId col-6' data-id=${expense._id}>ID: ${expense._id}</p>
-      <button class="showUpdate btn btn-primary col-6">Update</button>
-      <button class="delete btn btn-danger col-6" data-id=${expense._id} class="delete">Delete</button>
+      <button class="showUpdate greenWord btn btn-dark col-6">Update</button>
+      <button class="delete btn btn-dark col-6" data-id=${expense._id} class="delete">Delete</button>
     </div>
     `
   })
@@ -47,8 +47,8 @@ const showExpenseSuccess = (res) => {
     <h5 class='expenseAmount col-3'>Amount: $${res.authExpense.amount}</h5>
     <p class='expenseDate col-6'>Date: ${res.authExpense.due}</p>
     <p class='expenseId col-6' data-id=${res.authExpense._id}>ID: ${res.authExpense._id}</p>
-    <button class="showUpdate btn btn-primary col-6">Update</button>
-    <button class="btn btn-danger col-6" data-id=${res.authExpense._id} class="delete">Delete</button>
+    <button class="showUpdate greenWord btn btn-dark col-6">Update</button>
+    <button class="delete btn btn-dark col-6" data-id=${res.authExpense._id} class="delete">Delete</button>
   </div>
   `
 
@@ -72,18 +72,26 @@ const loadUpdateForm = () => {
       <input name="expense[amount]" class="col-7" type="text" placeholder="Enter Amount">
       <label class="col-4 updateFormLabel">Date</label>
       <input name="expense[due]" class="col-7" type="date" placeholder="MM/DD/YY(YYYY)">
-      <button class="btn btn-primary col-6 offset-md-3" type="submit" data-id=${expense}>Submit Update</button>
+      <button class="btn greenWord btn-dark col-6 offset-md-3" type="submit" data-id=${expense}>Submit Update</button>
     </form>
   <div>`)
+
+  $('.showUpdate').hide()
+  $('.delete').addClass('col-12')
 }
 
 const onDeleteExpenseSuccess = () => {
   console.log('its gone')
   $('#message').text('Successfully Deleted Expense. Click show expenses to view changes')
+  $('#expenseBoard').text('')
 }
 
 const onUpdateExpenseSuccess = () => {
   $('#message').text('Successfully Updated Expense. Click show expenses to view changes')
+  $('.showUpdate').show()
+  $('.delete').removeClass('col-12')
+  $('.updateForm-Section').hide()
+  $('#expenseBoard').text('')
 }
 
 const onUpdateExpenseFailure = (res) => {

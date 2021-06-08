@@ -2,24 +2,50 @@
 
 
 body{
-  background-color: #6f7372;
+  background-color: #65CCB8;
   color: white;
-  margin: 10%;
-  border: 1px solid green;
+  display: grid;
+  grid-template-columns: 20% auto 25%;
+  grid-template-rows: 20% auto 20%;
+  row-gap: 10px;
+  column-gap: 10px;
+}
+
+#navbar{
+  background-color: #3B945E;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+
+
+  & > #userDropDown {
+    text-align: center;
+  }
+
+  & > .dropdown-toggle {
+
+  }
 }
 
 // this will Allow access to Sign in and Sign Up form
 #inUp-form {
-  display: flex;
+  //display: flex;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
 
   // This allows access to TO signin section
   & > #signIn-Section {
-    border: 2px solid blue;
-    color: navy;
+    border: 2px solid green;
+    color: #182628;
     display: flex;
     flex-direction: column;
-    background-color: #143d38;
+    background-color: #57BA98;
+    box-shadow: 10px 5px 5px green;
     align-content: space-around;
+    text-align: center;
 
     // This will allow access into Sign in form
     & > #signIn-Form {
@@ -27,20 +53,28 @@ body{
 
     }
 
+
+
   }
 
   // This allows access to TO signup section
   & > #signUp-Section {
-    border: 2px solid blue;
+    border: 2px solid green;
     display: flex;
     flex-direction: column;
+    background-color: #57BA98;
+    box-shadow: 10px 5px 5px green;
+    color: #182628;
+    text-align: center;
+    align-content: space-around;
 
 
     // This will allow access to Sign up form
-    & > #signIn-Form {
+    & > #signUp-Form {
       flex-direction: column;
     }
   }
+
 
 
 
@@ -50,11 +84,19 @@ body{
 #expenseBoard {
 
   margin: 2%;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+
+
 // This will get you into Each expense Section
   & > .perExpenseSection {
     display: flex;
     border: 3px solid black;
     width: inherit;
+    background-color: #b2dbcf;
+    color: #182628;
   }
 
   & > #exampleExpense {
@@ -86,7 +128,35 @@ body{
 
 }
 
+#middle {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#right {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#message {
+  background-color: #3B945E;
+  color: #182628;
+  text-align: center;
+}
+
 #newExpense-Section {
   width: 98%;
   padding: 2%;
+}
+
+.delete{
+  color: red;
+}
+
+.greenWord {
+  color: green;
 }

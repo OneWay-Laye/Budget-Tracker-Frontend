@@ -14,6 +14,7 @@ const onCreateExpense = (event) => {
 
 const onShowCreateForm = (event) => {
   $('#newExpense-Section').show()
+  $('expenseBoard').text('')
 }
 
 const onIndexExpenses = (event) => {
