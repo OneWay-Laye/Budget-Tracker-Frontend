@@ -15,7 +15,6 @@ const onPageLoad = function (event) {
 const onSignIn = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
 
   api.signIn(data)
     .then(ui.onSignInSuccess)
@@ -32,7 +31,6 @@ const onShowSignUp = (event) => {
 const onSignUp = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
 
   api.signUp(data)
     .then(ui.onSignUpSuccess)
@@ -40,7 +38,6 @@ const onSignUp = (event) => {
 }
 
 const onShowSignIn = (event) => {
-  console.log('in SSi')
   $('#signIn-Section').show()
   $('#signUp-Section').hide()
 }
@@ -60,7 +57,6 @@ const onShowChangePW = (event) => {
 const onSubmitChangePassword = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
 
   api.changePassword(data)
     .then(ui.onChangePWSuccess)

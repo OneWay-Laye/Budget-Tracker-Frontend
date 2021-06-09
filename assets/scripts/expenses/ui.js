@@ -6,16 +6,16 @@ const onExpenseCreationSuccess = (res) => {
   store.expense = res.expense
   console.log(store.expense)
 
+  $('#newExpense').trigger('reset')
   $('#message').text(`Successfully Created Expense for ${res.expense.company}. Show expenses to see new Expense`)
+  $('#expenseBoard').text('')
 }
 
 const onExpenseCreationFailure = (res) => {
-  console.log('Error creating expense')
   $('#message').text('Error Creating Expense')
 }
 
 const onIndexExpensesSuccess = (res) => {
-  console.log(res)
   let expenseHtml = ''
 
   res.forEach(expense => {
@@ -36,11 +36,9 @@ const onIndexExpensesSuccess = (res) => {
 }
 
 const onIndexExpensesFailure = (res) => {
-  console.log(res)
 }
 
 const showExpenseSuccess = (res) => {
-  console.log(res)
   const expenseHtml = `
   <div class="perExpenseSection row" data-id=${res.authExpense._id}>
     <h2 class='expenseName col-9'>Expense: ${res.authExpense.company}</h2>
@@ -60,7 +58,6 @@ const showExpenseFailure = (res) => {
 }
 
 const loadUpdateForm = () => {
-  console.log('in LUF')
   const expense = $(event.target).parent().data('id')
 
   $(event.target).parent().append(`<div class="updateForm-Section">
@@ -74,6 +71,7 @@ const loadUpdateForm = () => {
       <input name="expense[due]" class="col-7" type="date" placeholder="MM/DD/YY(YYYY)">
       <button class="btn greenWord btn-dark col-6 offset-md-3" type="submit" data-id=${expense}>Submit Update</button>
     </form>
+    <button class="btn btn-dark cancelUpdate">Cancel Update</button>
   <div>`)
 
   $('.showUpdate').hide()
@@ -81,7 +79,6 @@ const loadUpdateForm = () => {
 }
 
 const onDeleteExpenseSuccess = () => {
-  console.log('its gone')
   $('#message').text('Successfully Deleted Expense. Click show expenses to view changes')
   $('#expenseBoard').text('')
 }
@@ -91,6 +88,7 @@ const onUpdateExpenseSuccess = () => {
   $('.showUpdate').show()
   $('.delete').removeClass('col-12')
   $('.updateForm-Section').hide()
+  $('.updateForm').trigger('reset')
   $('#expenseBoard').text('')
 }
 

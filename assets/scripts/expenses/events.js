@@ -39,17 +39,14 @@ const onShowExpense = (event) => {
 
 const onloadUpdate = (event) => {
   event.preventDefault()
-  console.log('OLU')
   ui.loadUpdateForm()
 }
 
 const onUpdateExpense = (event) => {
   event.preventDefault()
-  console.log('in onUpdateExpense')
   const data = getFormFields(event.target)
   const id = $(event.target).data('id')
   const parent = $(event.target).parent()
-  console.log(parent)
   const grandParent = parent.parent()
 
   console.log(grandParent)
@@ -65,11 +62,9 @@ const onDeleteExpense = (event) => {
   event.preventDefault()
 
   const id = $(event.target).data('id')
-  console.log(id)
 
   api.deleteExpense(id)
     .then(ui.onDeleteExpenseSuccess)
-    .catch(console.log('problem deleting'))
 }
 
 module.exports = {

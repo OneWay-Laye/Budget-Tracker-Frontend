@@ -11,6 +11,13 @@ body{
   column-gap: 10px;
 }
 
+#left {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+
 #navbar{
   background-color: #3B945E;
   grid-column-start: 1;

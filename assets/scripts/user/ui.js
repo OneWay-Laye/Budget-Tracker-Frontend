@@ -11,12 +11,11 @@ const onLoad = () => {
 }
 
 const onSignInSuccess = (res) => {
-  console.log('successfully signed in')
-  $('#message').text('successfully signed in')
+  $('#message').text('Successfully Signed in')
   $('#signIn-Form').trigger('reset')
   $('#signIn-Section').hide()
+  $('#signIn-Form').trigger('reset')
   store.user = res.user
-  console.log(store.user)
 
   $('#signOut').show()
   $('#changePW').show()
@@ -27,12 +26,10 @@ const onSignInSuccess = (res) => {
 }
 
 const onSignInFailure = () => {
-  console.log('Error signing in')
   $('#message').text('Error signing in')
 }
 
 const onSignUpSuccess = () => {
-  console.log('successfully signed up')
   $('#message').text('Successfully signed up')
   $('#signUp-Form').trigger('reset')
   $('#signUp-Section').hide()
@@ -40,16 +37,13 @@ const onSignUpSuccess = () => {
 }
 
 const onSignUpFailure = () => {
-  console.log('Error signing up')
   $('#message').text('Error signing up')
 }
 
 const onSignOutSuccess = () => {
-  console.log('successfully signed out')
   $('#message').text('Successfully Signed out')
 
   store.user = null
-  console.log(store.user)
 
   onLoad()
   $('#signIn-Section').show()
@@ -58,14 +52,13 @@ const onSignOutSuccess = () => {
 }
 
 const onChangePWSuccess = () => {
-  console.log('successfully changed password')
   $('#message').text('Successfully Changed Password')
   $('#changePW-Section').hide()
   $('#changePW').show()
+  $('#changePW-Section').trigger('reset')
 }
 
 const onChangePWFailure = () => {
-  console.log('error changing password, Please try again')
   $('#message').text('Error changing password, Please try again')
 }
 
