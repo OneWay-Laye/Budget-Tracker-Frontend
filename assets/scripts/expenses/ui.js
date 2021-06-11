@@ -9,6 +9,8 @@ const onExpenseCreationSuccess = (res) => {
   $('#newExpense').trigger('reset')
   $('#message').text(`Successfully Created Expense for ${res.expense.company}. Show expenses to see new Expense`)
   $('#expenseBoard').text('')
+  $('#index-Expenses').click()
+  $('#newExpense-Section').hide()
 }
 
 const onExpenseCreationFailure = (res) => {
@@ -51,10 +53,12 @@ const showExpenseSuccess = (res) => {
   `
 
   $('#expenseBoard').html(expenseHtml)
+  $('#findExpense-Form').trigger('reset')
 }
 
 const showExpenseFailure = (res) => {
   $('#message').text('There was error showing expense')
+  $('#findExpense-Form').trigger('reset')
 }
 
 const loadUpdateForm = () => {
@@ -81,6 +85,7 @@ const loadUpdateForm = () => {
 const onDeleteExpenseSuccess = () => {
   $('#message').text('Successfully Deleted Expense. Click show expenses to view changes')
   $('#expenseBoard').text('')
+  $('#index-Expenses').click()
 }
 
 const onUpdateExpenseSuccess = () => {
@@ -90,6 +95,7 @@ const onUpdateExpenseSuccess = () => {
   $('.updateForm-Section').hide()
   $('.updateForm').trigger('reset')
   $('#expenseBoard').text('')
+  $('#index-Expenses').click()
 }
 
 const onUpdateExpenseFailure = (res) => {

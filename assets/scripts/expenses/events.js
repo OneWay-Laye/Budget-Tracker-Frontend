@@ -12,6 +12,11 @@ const onCreateExpense = (event) => {
     .catch(ui.onExpenseCreationFailure)
 }
 
+const onCancelCreation = (event) => {
+  $('#newExpense').trigger('reset')
+  $('#newExpense-Section').hide()
+}
+
 const onShowCreateForm = (event) => {
   $('#newExpense-Section').show()
   $('expenseBoard').text('')
@@ -81,5 +86,6 @@ module.exports = {
   onDeleteExpense,
   onloadUpdate,
   onShowCreateForm,
-  onCancelUpdate
+  onCancelUpdate,
+  onCancelCreation
 }

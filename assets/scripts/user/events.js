@@ -25,6 +25,8 @@ const onShowSignUp = (event) => {
   $('#signIn-Section').hide()
   $('#signUp-Section').show()
   $('#signUp-Section').addClass('col-10')
+  $('#signIn-Form').trigger('reset')
+  $('#signUp-Form').trigger('reset')
 }
 
 // This will run whenever a user signs up
@@ -40,6 +42,8 @@ const onSignUp = (event) => {
 const onShowSignIn = (event) => {
   $('#signIn-Section').show()
   $('#signUp-Section').hide()
+  $('#signIn-Form').trigger('reset')
+  $('#signUp-Form').trigger('reset')
 }
 
 const onSignOut = (event) => {

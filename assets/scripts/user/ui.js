@@ -14,7 +14,6 @@ const onSignInSuccess = (res) => {
   $('#message').text('Successfully Signed in')
   $('#signIn-Form').trigger('reset')
   $('#signIn-Section').hide()
-  $('#signIn-Form').trigger('reset')
   store.user = res.user
 
   $('#signOut').show()
@@ -27,6 +26,7 @@ const onSignInSuccess = (res) => {
 
 const onSignInFailure = () => {
   $('#message').text('Error signing in')
+  $('#signIn-Form').trigger('reset')
 }
 
 const onSignUpSuccess = () => {
@@ -38,6 +38,7 @@ const onSignUpSuccess = () => {
 
 const onSignUpFailure = () => {
   $('#message').text('Error signing up')
+  $('#signUp-Form').trigger('reset')
 }
 
 const onSignOutSuccess = () => {
@@ -49,13 +50,15 @@ const onSignOutSuccess = () => {
   $('#signIn-Section').show()
   $('#expenseBoard').addClass('beforein')
   $('#right').hide()
+  $('#signIn-Form').trigger('reset')
+  $('#signUp-Form').trigger('reset')
 }
 
 const onChangePWSuccess = () => {
   $('#message').text('Successfully Changed Password')
   $('#changePW-Section').hide()
   $('#changePW').show()
-  $('#changePW-Section').trigger('reset')
+  $('#changePW-Form').trigger('reset')
 }
 
 const onChangePWFailure = () => {
