@@ -42,6 +42,12 @@ const onloadUpdate = (event) => {
   ui.loadUpdateForm()
 }
 
+const onCancelUpdate = (event) => {
+  $('.updateForm-Section').hide()
+  $('.delete').removeClass('col-12')
+  $('.showUpdate').show()
+}
+
 const onUpdateExpense = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -74,6 +80,6 @@ module.exports = {
   onUpdateExpense,
   onDeleteExpense,
   onloadUpdate,
-  onShowCreateForm
-
+  onShowCreateForm,
+  onCancelUpdate
 }

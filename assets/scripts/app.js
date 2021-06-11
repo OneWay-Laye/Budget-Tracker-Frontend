@@ -30,6 +30,5 @@ $(() => {
   $('#expenseBoard').on('click', '.showUpdate', expenseEvents.onloadUpdate)
   $('#expenseBoard').on('submit', '.perExpenseSection', expenseEvents.onUpdateExpense)
   $('#showCreate').on('click', expenseEvents.onShowCreateForm)
-
-
+  $('#expenseBoard').on('click', '.cancelUpdate', expenseEvents.onCancelUpdate)
 })
