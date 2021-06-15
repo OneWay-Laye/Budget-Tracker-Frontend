@@ -8,6 +8,7 @@ const onLoad = () => {
   $('#showCreate').hide()
   $('#expenseBoard').hide()
   $('#right').hide()
+  $('#left').hide()
 }
 
 const onSignInSuccess = (res) => {
@@ -15,6 +16,7 @@ const onSignInSuccess = (res) => {
   $('#signIn-Form').trigger('reset')
   $('#signIn-Section').hide()
   store.user = res.user
+  const token = store.user.token
 
   $('#signOut').show()
   $('#changePW').show()
@@ -22,6 +24,8 @@ const onSignInSuccess = (res) => {
   $('#user').show()
   $('#expenseBoard').show()
   $('#right').show()
+  $('#left').show()
+  return token
 }
 
 const onSignInFailure = () => {

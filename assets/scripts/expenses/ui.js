@@ -11,6 +11,7 @@ const onExpenseCreationSuccess = (res) => {
   $('#expenseBoard').text('')
   $('#index-Expenses').click()
   $('#newExpense-Section').hide()
+  return res
 }
 
 const onExpenseCreationFailure = (res) => {
@@ -35,9 +36,6 @@ const onIndexExpensesSuccess = (res) => {
 
   $('#expenseBoard').html(expenseHtml)
   $('.updateForm-Section').hide()
-}
-
-const onIndexExpensesFailure = (res) => {
 }
 
 const showExpenseSuccess = (res) => {
@@ -82,13 +80,14 @@ const loadUpdateForm = () => {
   $('.delete').addClass('col-12')
 }
 
-const onDeleteExpenseSuccess = () => {
+const onDeleteExpenseSuccess = (res) => {
   $('#message').text('Successfully Deleted Expense. Click show expenses to view changes')
   $('#expenseBoard').text('')
   $('#index-Expenses').click()
+  return res
 }
 
-const onUpdateExpenseSuccess = () => {
+const onUpdateExpenseSuccess = (res) => {
   $('#message').text('Successfully Updated Expense. Click show expenses to view changes')
   $('.showUpdate').show()
   $('.delete').removeClass('col-12')
@@ -96,6 +95,7 @@ const onUpdateExpenseSuccess = () => {
   $('.updateForm').trigger('reset')
   $('#expenseBoard').text('')
   $('#index-Expenses').click()
+  return res
 }
 
 const onUpdateExpenseFailure = (res) => {
@@ -106,7 +106,6 @@ module.exports = {
   onExpenseCreationSuccess,
   onExpenseCreationFailure,
   onIndexExpensesSuccess,
-  onIndexExpensesFailure,
   showExpenseSuccess,
   showExpenseFailure,
   loadUpdateForm,

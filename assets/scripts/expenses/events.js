@@ -1,4 +1,6 @@
 const api = require('./api')
+const incomeApi = require('./../income/api')
+const incomeUi = require('./../income/ui')
 const ui = require('./ui')
 const getFormFields = require('./../../../lib/get-form-fields')
 
@@ -66,6 +68,8 @@ const onUpdateExpense = (event) => {
 
   api.updateExpense(data, id)
     .then(ui.onUpdateExpenseSuccess)
+    .then(incomeApi.updateIncome)
+    .then(incomeUi.onUpdateIncomeSuccess)
     .catch(ui.onUpdateExpenseFailure)
 }
 

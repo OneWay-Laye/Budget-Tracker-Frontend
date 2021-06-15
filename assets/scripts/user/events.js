@@ -4,6 +4,12 @@ const api = require('./api')
 // This will bring in my Ui changes
 const ui = require('./ui')
 
+// This will bring in my income api
+const incomeApi = require('./../income/api')
+
+// This will bring in my income ui
+const incomeUi = require('./../income/ui')
+
 // This will bring in user input from fields
 const getFormFields = require('./../../../lib/get-form-fields')
 
@@ -18,6 +24,8 @@ const onSignIn = (event) => {
 
   api.signIn(data)
     .then(ui.onSignInSuccess)
+    .then(incomeApi.getIncome)
+    .then(incomeUi.onGetIncomeSuccess)
     .catch(ui.onSignInFailure)
 }
 
